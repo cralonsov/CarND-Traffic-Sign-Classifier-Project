@@ -3,7 +3,10 @@
 ---
 
 Author: Cristian Alonso
+
 Date: 2017-04-16
+
+---
 
 **Build a Traffic Sign Recognition Project**
 
@@ -21,8 +24,8 @@ The goals / steps of this project are the following:
 [image1]: ./examples/histogram.png "Percentage of signals"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/ahead_only.png "Ahead only Sign"
-[image5]: ./examples/stop.png "Stop Sign"
+[image4]: ./examples/placeholder.png "Traffic Sign 1"
+[image5]: ./examples/placeholder.png "Traffic Sign 2"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
@@ -33,7 +36,7 @@ The goals / steps of this project are the following:
 ---
 ### README
 
-Here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+Here is a link to my [project code](https://github.com/cralonsov/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ### Data Set Summary & Exploration
 
