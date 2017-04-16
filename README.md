@@ -18,11 +18,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
+[image1]: ./examples/histogram.png "Percentage of signals"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
+[image4]: ./examples/ahead_only.png "Ahead only Sign"
+[image5]: ./examples/stop.png "Stop Sign"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
@@ -37,8 +37,6 @@ Here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sig
 
 ### Data Set Summary & Exploration
 
-#### 1. Provide a basic summary of the data set. 
-
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:
 
@@ -48,11 +46,12 @@ signs data set:
 * The shape of a traffic sign image is (32, 32, 3)
 * The number of unique classes/labels in the data set is 43
 
-#### 2. Include an exploratory visualization of the dataset.
-
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. I plotted the data into a bar chart to look how many times each signal image is repeated. As it can be seen here, there are really big differences between some signals and anothers.
 
 ![alt text][image1]
+
+For example, the **Speed limit (20km/h)** signal (first_index) has only 180 images for training but the **Speed limit (50km/h)** (third_index) has 2010! With these differences, problems may appear later when the car is not able to identify a signal because the neural network was not trained with enough data.
+
 
 ### Design and Test a Model Architecture
 
