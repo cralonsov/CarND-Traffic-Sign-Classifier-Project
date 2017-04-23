@@ -26,11 +26,11 @@ The goals / steps of this project are the following:
 [image3]: ./examples/random_transform.png "Random modifications"
 [image4]: ./examples/barchart_after.png "Percentage of signals after"
 [image5]: ./examples/lenet.png "Lenet-5 Architecture"
-[image5]: ./examples/placeholder.png "Traffic Sign 1"
-[image6]: ./examples/placeholder.png "Traffic Sign 2"
-[image7]: ./examples/placeholder.png "Traffic Sign 3"
-[image8]: ./examples/placeholder.png "Traffic Sign 4"
-[image9]: ./examples/placeholder.png "Traffic Sign 5"
+[image5]: ./examples/signal1.png "Traffic Sign 1"
+[image6]: ./examples/signal2.png "Traffic Sign 2"
+[image7]: ./examples/signal3.png "Traffic Sign 3"
+[image8]: ./examples/signal4.png "Traffic Sign 4"
+[image9]: ./examples/signal5.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -135,7 +135,7 @@ I used a batch size of **128**. I used it because it is recommended to use an sm
 A common size of the batches are 32, 64, 128, 256, 512...
 
 ##### Learning rate
-As we are using a big dataset, summing up all the weights in each step can lead to really large updates that would make the gradint descent diverge. To compensate this, we need to use a small learning rate, which I saw that the best one was 0.001.
+As we are using a big dataset, summing up all the weights in each step can lead to really large updates that would make the gradint descent diverge. To compensate this, we need to use a small learning rate, which I saw that the best one was **0.001**.
 
 Learning rates are tipically in the range of 0.01 to 0.0001. 
 
@@ -148,9 +148,9 @@ It is reputed to work well for both sparse matrices and noisy data.
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.993
-* validation set accuracy of 0.940 
-* test set accuracy of 0.919
+* Training set accuracy of **0.990**
+* Validation set accuracy of **0.934** 
+* Test set accuracy of **0.925**
 
 The architecture chose was, as stated before, Lenet-5. It was firstly designed to classify hand-written data but it seems to work really well with traffic signals as they are mostly numbers and arrows.
 
