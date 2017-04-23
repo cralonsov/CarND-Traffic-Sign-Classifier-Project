@@ -22,8 +22,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./examples/barchart_before.png "Percentage of signals before"
-[image2]: ./examples/normalization.jpg "Normalization"
-[image3]: ./examples/random_transform.jpg "Random modifications"
+[image2]: ./examples/normalization.png "Normalization"
+[image3]: ./examples/random_transform.png "Random modifications"
 [image4]: ./examples/barchart_after.png "Percentage of signals after"
 [image5]: ./examples/lenet.png "Lenet-5 Architecture"
 [image5]: ./examples/placeholder.png "Traffic Sign 1"
