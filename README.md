@@ -26,11 +26,11 @@ The goals / steps of this project are the following:
 [image3]: ./examples/random_transform.png "Random modifications"
 [image4]: ./examples/barchart_after.png "Percentage of signals after"
 [image5]: ./examples/lenet.png "Lenet-5 Architecture"
-[image5]: ./examples/signal1.png "Traffic Sign 1"
-[image6]: ./examples/signal2.png "Traffic Sign 2"
-[image7]: ./examples/signal3.png "Traffic Sign 3"
-[image8]: ./examples/signal4.png "Traffic Sign 4"
-[image9]: ./examples/signal5.png "Traffic Sign 5"
+[image6]: ./examples/signal3.png "Traffic Sign 1"
+[image7]: ./examples/signal1.png "Traffic Sign 2"
+[image8]: ./examples/signal4.png "Traffic Sign 3"
+[image9]: ./examples/signal5.png "Traffic Sign 4"
+[image10]: ./examples/signal2.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -62,7 +62,7 @@ For example, the **Speed limit (20km/h)** signal (first_index) has only 180 imag
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to normalize the dataset so that the average brithness of the images is removed.
+As a first step, I decided to normalize the dataset so that the average brigthness of the images is removed.
 
 When looking at the images, it can be seen that the dataset has many different illumination conditions. So if we remove the average pixel value per data point, we can focuse more in the concrete details of the pictures.
 
@@ -172,9 +172,13 @@ And as it can be seen in the [project code](https://github.com/cralonsov/CarND-T
 Here are five German traffic signs that I found on the web:
 
 ![alt text][image6] ![alt text][image7] ![alt text][image8] 
-![alt text][image7] ![alt text][image8]
+![alt text][image9] ![alt text][image10]
 
-The first image might be difficult to classify because ...
+For the human eye, I think that the most difficult signals to classify would be the two speed limit signals due to the poor light conditions that they have. The 70 km/h signal borders look like part of the landscape. 
+
+I also think that the "Road Work" signal would be difficult to classify because the signal background looks like it has the same color as the sky.
+
+That being said, after normalizing the images, it can be seen that these problems commented above, dissapear because this operation let the CNN focuse more in the details as it removes the brightness of the image.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -182,33 +186,71 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Priority road   		| Priority road									| 
+| Speed limit (70km/h)	| *Speed limit (30km/h)*						|
+| Turn left ahead		| Turn left ahead								|
+| Speed limit (60km/h)	| Speed limit (60km/h)			 				|
+| Road Work				| Road Work										|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. And as it was predicted, the 70 km/h signal was the one that was unproperly classified. 
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+It can be seen in the barchart of the IPython Notebook as the signal predicted, Speed limit (30km/h), is among the most repeated signals in the training set, so even though this is a bad prediction, it can be understandable.
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. 
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+The code for making predictions on my final model is located in the 137th cell of the Ipython notebook.
 
-| Probability         	|     Prediction	        					| 
+For the first image, the model is completely sure that it was a *Priority Road* signal. This one was probably easy because it is probably the only one in the dataset with these colors and shape. The top five soft max probabilities were:
+
+| Probability (Image1) 	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1.000000				| 12 - Priority Road							| 
+| 0.000000				| ---											|
+| 0.000000				| ---											|
+| 0.000000				| ---											|
+| 0.000000				| ---											|
 
 
-For the second image ... 
+The second image was the one incorrectly classified. The predicted signal was with 99.9% of accuracy *Speed Limit (30 km/h)*, while the real one was *Speed Limit (70 km/h)*. 
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+Even though that the CNN "was completely sure' that the signal was 30 km/h, it has the lowest accuraccy of all the predictions (99.82%). Then, the the second prediction, with 0.17 % is the real signal.
+
+Looking at the predictions, it gives us the impression that we have to increase the dataset of the speed limit signals. This is because they are very similar and we have 8 of them with the same shape, color and always sharing the last number (0).
+
+| Probability (Image2) 	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.998289     			| 1 - Speed limit (30km/h)						| 
+| 1.71e-03				| 4 - Speed limit (70km/h)						|
+| 1.42e-07				| 0 - Speed limit (20km/h)						|
+| 4.18e-08    			| 7 - Speed limit (100km/h)						|
+| 7.74e-12			    | 8 - Speed limit (120km/h)						|
 
 
+The rest of the images, as it can be seen in the following tables, were sucessfully classified:
+
+| Probability (Image3) 	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.000000				| 34 - Turn left ahead							| 
+| 0.000000				| ---											|
+| 0.000000				| ---											|
+| 0.000000				| ---											|
+| 0.000000				| ---											|
+
+
+| Probability (Image4) 	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.000000				| 3 - Speed limit (60km/h)						| 
+| 2.84e-14				| 5 - Speed limit (80km/h)						|
+| 1.99e-16				| 15 - No vehicles								|
+| 1.08e-18    			| 2 - Speed limit (50km/h)						|
+| 6.96e-20			    | 1 - Speed limit (20km/h)						|
+
+
+| Probability (Image5) 	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 1.000000				| 25 - Road work								| 
+| 1.83e-25				| 30 - Beware of ice/snow						|
+| 3.72e-35				| 22 - Bumpy Road								|
+| 4.01e-37    			| 29 - Bicycles crossing						|
+| 0.000000				| ---											|
